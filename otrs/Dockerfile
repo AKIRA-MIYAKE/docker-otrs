@@ -8,7 +8,8 @@ ENV OTRS_CONFIG_DIR "${OTRS_ROOT}Kernel"
 ENV OTRS_CONFIG_MOUNT_DIR "/config/"
 ENV SKINS_PATH "${OTRS_ROOT}/var/httpd/htdocs/skins/"
 
-RUN yum install -y epel-release && \
+RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 && \
+    yum install -y epel-release && \
     yum update -y && \
     yum -y install cronie httpd httpd-devel mysql mod_perl \
     perl-core "perl(Crypt::SSLeay)" "perl(Net::LDAP)" "perl(URI)" \
